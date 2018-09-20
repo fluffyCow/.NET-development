@@ -10,12 +10,12 @@ namespace EnvironmentCrime_1.Controllers
     {
         public IActionResult Start()
         {
-            return View("StartInvestigatorView");
+            return View("StartView");
         }
 
-        public IActionResult CrimeInvestigator()
+        public IActionResult Crime()
         {
-            return View("CrimeInvestigatorView");
+            return View("CrimeView");
         }
     }
 }
