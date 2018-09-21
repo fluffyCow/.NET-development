@@ -8,10 +8,6 @@ namespace EnvironmentCrime_1.Controllers
 {
     public class ManagerController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult Crime()
         {
