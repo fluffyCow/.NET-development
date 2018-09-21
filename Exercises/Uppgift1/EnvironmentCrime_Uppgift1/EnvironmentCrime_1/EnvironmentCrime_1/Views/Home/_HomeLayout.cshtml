@@ -2,15 +2,15 @@
 @{
     Layout = "_BasicLayout";
 }
-
-
 <nav>
     <ul>
         <li><a asp-controller="Home" asp-action="Index">Hem</a></li>
         <li><a asp-controller="Citizen" asp-action="Services">Tjänster</a></li>
         <li><a asp-controller="Citizen" asp-action="Faq">FAQ</a></li>
         <li><a asp-controller="Citizen" asp-action="Contact">Kontakt</a></li>
-        <li class="right"><a class="login" asp-controller="Home" asp-action="Login">Logga in (endast personal)</a></li>
+        <li class="right">
+            <a class="login" asp-controller="Home" asp-action="Login">Logga in (endast personal)</a>
+        </li>
     </ul>
 </nav><!-- End Nav -->
 
@@ -18,6 +18,7 @@
     <section id="mainColumn">
 
         @RenderBody()
+
     </section><!-- End Left -->
 
     <aside id="sideColumn">
@@ -31,3 +32,7 @@
         <img src="~/images/pic_8.jpg" height="162" alt="Närbild av en fotboll" />
     </aside><!-- End Right -->
 
+    <footer>
+        &copy; Småstads Kommun All rights reserved.
+    </footer>
+</div><!-- End Content -->
