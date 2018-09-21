@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "_HomeLayout";
+}
+
+<h2>Inloggning för Småstads personal</h2>
+<p class="info">En säker tjänst från Småstads IT-avdelning</p>
+
+<form method="post" asp-controller="Coordinator" asp-action="Start">
+    <p>
+        
+        <input type="hidden" name="isSubmitted" value="true" />
+            
+    </p>
+    <p>
+        <!--
+        <label asp-for="user">Användarnamn</label>
+        <input asp-for="user" />
+-->
+        <span class="label">Användarnamn:</span><br />
+        <input type="text" name="user" />
+    </p>
+    <p>
+        <!--
+        <label asp-for="password">Lösenord</label>
+        <input asp-for="password" />
+-->      <span class="label">Lösenord:</span><br />
+        <input type="password" name="password" />
+    </p>
+    <p>
+        <!--
+        <button type="submit">Inloggning av samordnare</button>
+-->
+            <input class="button" type="submit" value="Inloggning av samordnare" />
+        <br />
+        <!--Dessa länkar ska sedan tas bort då det är meningen att vid kontrollen av inloggningsuppgifter så hämtas rätt sida-->
+        <a class="button" asp-controller="Manager" asp-action="Start">Inloggning av chefer</a><br />
+        <a class="button" asp-controller="Investigator" asp-action="Start">Inloggning av handläggare</a>
+    </p>
+</form>
