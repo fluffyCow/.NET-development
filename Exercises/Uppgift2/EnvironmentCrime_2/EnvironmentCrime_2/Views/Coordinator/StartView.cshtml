@@ -4,6 +4,8 @@
     Layout = "_CoordinatorLayout";
 }
 
+@Model IEnumerable<Repository>
+
 
     <h2>Ärenden</h2>
     <p class="info">Du är inloggad som samordnare</p>
@@ -52,61 +54,16 @@
             <th>Avdelning</th>
             <th>Handläggare</th>
         </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0201</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Ej startad</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Ingen utredare satt</td>
-        </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0202</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Pågående</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Ada Bengtsson</td>
-        </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0203</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Ej startad</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Ingen utredare satt</td>
-        </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0204</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Ej startad</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Ingen utredare satt</td>
-        </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0205</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Pågående</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Bengt Cederström</td>
-        </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0206</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Ej startad</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Ingen utredare satt</td>
-        </tr>
-        <tr>
-            <td>2014-05-01</td>
-            <td><a asp-controller="Coordinator" asp-action="Crime">2014-45-0206</a></td>
-            <td>Oljeutsläpp</td>
-            <td>Ej startad</td>
-            <td>Tekniska avloppshanteringen</td>
-            <td>Ingen utredare satt</td>
-        </tr>
+        @foreach(Errand e in Model.Repository)
+        {
+            <tr>
+                <td>@e.DateOfObservation</td>
+                <td><a asp-controller="Coordinator" asp-action="Crime" asp-route=e.ErrandID> e.ErrandID </a></td>
+                <td>@e.TypeOfCrime</td>
+                <td>@e.StatusId</td>
+                <td>@e.DepartmentId</td>
+                <td>@e.EmployeeId</td>
+            </tr>
+        }
     </table>
 
