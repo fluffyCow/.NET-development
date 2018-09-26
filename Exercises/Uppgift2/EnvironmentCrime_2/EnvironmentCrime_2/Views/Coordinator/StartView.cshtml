@@ -1,11 +1,9 @@
-﻿
-@{
-    ViewData["Title"] = "StartCoordinatorView";
-    Layout = "_CoordinatorLayout";
-}
+﻿    
 
-@Model IEnumerable<Repository>
-
+    @{
+        ViewData["Title"] = "StartCoordinatorView";
+        Layout = "_CoordinatorLayout";
+    }
 
     <h2>Ärenden</h2>
     <p class="info">Du är inloggad som samordnare</p>
@@ -54,11 +52,11 @@
             <th>Avdelning</th>
             <th>Handläggare</th>
         </tr>
-        @foreach(Errand e in Model.Repository)
+        @foreach (Errand e in Model.Errands)
         {
             <tr>
                 <td>@e.DateOfObservation</td>
-                <td><a asp-controller="Coordinator" asp-action="Crime" asp-route=e.ErrandID> e.ErrandID </a></td>
+                <td><a asp-controller="Coordinator" asp-action="Crime" asp-route-id=@e.ErrandID> @e.ErrandID </a></td>
                 <td>@e.TypeOfCrime</td>
                 <td>@e.StatusId</td>
                 <td>@e.DepartmentId</td>

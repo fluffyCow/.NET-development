@@ -21,9 +21,11 @@ namespace EnvironmentCrime_2.Controllers
             return View("StartView", repository);
         }
 
-        public IActionResult Crime()
+        public IActionResult Crime(String id)
         {
-            return View("CrimeView");
+            var errand = repository.Errands.Where (e => e.ErrandID == id).First();
+
+            return View("CrimeView", errand);
         }
 
         public IActionResult ReportCrime()
