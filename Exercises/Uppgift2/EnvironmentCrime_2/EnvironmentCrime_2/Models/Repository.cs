@@ -14,5 +14,7 @@ namespace EnvironmentCrime_2.Models
         IQueryable<ErrandStatus> ErrandStatuses { get; }
 
         IQueryable<Employee> Employees { get; }
+
+        Task<Errand> GetErrandDetail(String id);
     }
  }

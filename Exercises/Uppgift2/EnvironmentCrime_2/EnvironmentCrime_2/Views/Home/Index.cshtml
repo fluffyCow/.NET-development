@@ -2,6 +2,8 @@
     Layout = "_HomeLayout";
 }
 
+@model ReportCrime
+
 <h2>Välkommen att fylla i din anmälan av miljöbrott</h2>
 <p class="info">I Småstad är inga brott för små för att anmälas</p>
 
@@ -9,31 +11,38 @@
 
 <form method="post" asp-controller="Citizen" asp-action="Validate">
     <p>
-        <input type="hidden" name="isSubmitted" value="true" />
+        <input type="hidden" asp-for="IsSubmitted" value="true" />
     </p>
     <p>
-        <span class="label">Var har brottet skett någonstans?</span><br />
-        <input type="text" name="place" /> *
+        <label asp-for="Place" class="label" ></label>
+        <input asp-for="Place"/>
+        <span asp-validation-for="Place"></span>
     </p>
     <p>
-        <span class="label">Vilken typ av brott?</span><br />
-        <input type="text" name="crime" /> *
+        <label asp-for="Crime" class="label"></label>
+        <input asp-for="Crime" />
+        <span asp-validation-for="Crime"></span>
     </p>
     <p>
-        <span class="label">När skedde brottet?</span><br />
-        <input type="text" name="crimeDate" /> *
+        <label asp-for="CrimeDate" class="label"></label>
+        <input asp-for="CrimeDate" />
+        <span asp-validation-for="CrimeDate"></span>
     </p>
     <p>
-        <span class="label">Ditt namn (för- och efternamn):</span><br />
-        <input type="text" name="informersName" /> *
+        <label asp-for="InformersName" class="label"></label>
+        <input asp-for="InformersName" />
+        <span asp-validation-for="InformersName"></span>
     </p>
     <p>
-        <span class="label">Din telefon:</span><br />
-        <input type="text" name="phone" /> *
+        <label asp-for="Phone" class="label"></label>
+        <input asp-for="Phone" />
+        <span asp-validation-for="Phone"></span>
     </p>
     <p>
-        <span class="label">Beskriv din observation<br /> (ex. namn på misstänkt person):</span><br />
-        <textarea name="observation" rows="5" cols="16"></textarea>
+        <label asp-for="Observation" class="label" ></label>
+        <input asp-for="Observation" />
+<!--       <textarea name="observation" rows="5" cols="16"></textarea>
+    -->
     </p>
     <p>
         <input class="button" type="submit" value="Skicka in" />

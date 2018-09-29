@@ -23,6 +23,7 @@ namespace EnvironmentCrime_2.Models
 
         public IQueryable<Department> Departments => new List<Department>
         {
+
             new Department{DepartmentId="D00", DepartmentName="Småstads Kommun"},
             new Department{DepartmentId="D01", DepartmentName="IT-avdelningen"},
             new Department{DepartmentId="D02", DepartmentName="Lek och Skoj"},
@@ -44,6 +45,15 @@ namespace EnvironmentCrime_2.Models
             new Employee{EmployeeId="E401", EmployeeName="Oskar Ivarsson", RoleTitle="investigator", DepartmentId="D02"},
             new Employee{EmployeeId="E501", EmployeeName="Susanne Fred", RoleTitle="investigator", DepartmentId="D03"}
         }.AsQueryable();
+
+        public Task<Errand> GetErrandDetail(String id)
+        {
+            return Task.Run(() =>
+            {
+                var errand = Errands.Where(e => e.ErrandID == id).First();
+                return errand;
+            });
+        }
     }
 
 }
