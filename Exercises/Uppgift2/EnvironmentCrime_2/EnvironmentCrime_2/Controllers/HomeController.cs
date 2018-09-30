@@ -28,5 +28,18 @@ namespace EnvironmentCrime_2.Controllers
         {
             return View("Index");
         }
+
+        [HttpPost]
+        public IActionResult Validate(ReportCrime reportCrime)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Validate", "Citizen", reportCrime);
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
     }
 }

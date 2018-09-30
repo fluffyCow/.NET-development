@@ -29,19 +29,9 @@ namespace EnvironmentCrime_2.Controllers
             return View("ThanksView");
         }
 
-        [HttpPost]
-        public ViewResult Validate(ReportCrime reportCrime)
+        public IActionResult Validate(ReportCrime reportCrime)
         {
-            if (ModelState.IsValid)
-            {
-                return View("ValidateView", reportCrime);
-            }
-            else
-            {
-                RedirectToAction("Start", "Home");
-            }
-
-
+            return View("ValidateView", reportCrime);
         }
 
 

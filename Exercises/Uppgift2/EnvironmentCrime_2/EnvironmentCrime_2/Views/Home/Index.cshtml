@@ -9,34 +9,34 @@
 
 <p>Fyll i formuläret nedan, alla rutor markerade med stjärna (*) måste fyllas i.</p>
 
-<form method="post" asp-controller="Citizen" asp-action="Validate">
+<form method="post" asp-controller="Home" asp-action="Validate">
     <p>
         <input type="hidden" asp-for="IsSubmitted" value="true" />
     </p>
     <p>
         <label asp-for="Place" class="label" ></label>
         <input asp-for="Place"/>
-        <span asp-validation-for="Place"></span>
+        <span asp-validation-for="Place" class="error"></span>
     </p>
     <p>
         <label asp-for="Crime" class="label"></label>
         <input asp-for="Crime" />
-        <span asp-validation-for="Crime"></span>
+        <span asp-validation-for="Crime" class="error"></span>
     </p>
     <p>
         <label asp-for="CrimeDate" class="label"></label>
         <input asp-for="CrimeDate" />
-        <span asp-validation-for="CrimeDate"></span>
+        <span asp-validation-for="CrimeDate" class="error"></span>
     </p>
     <p>
         <label asp-for="InformersName" class="label"></label>
         <input asp-for="InformersName" />
-        <span asp-validation-for="InformersName"></span>
+        <span asp-validation-for="InformersName" class="error"></span>
     </p>
     <p>
         <label asp-for="Phone" class="label"></label>
         <input asp-for="Phone" />
-        <span asp-validation-for="Phone"></span>
+        <span asp-validation-for="Phone" class="error"></span>
     </p>
     <p>
         <label asp-for="Observation" class="label" ></label>
