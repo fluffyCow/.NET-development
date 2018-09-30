@@ -1,5 +1,5 @@
 ﻿
-@model ReportCrime
+@model Errand
 
 @{
     Layout = "_CoordinatorLayout";
@@ -14,10 +14,10 @@
 </p>
 <p>
 <p><span class="label">Var har brottet skett någonstans?</span><br />@Model.Place</p>
-<p><span class="label">Vilken typ av brott?</span><br />@Model.Crime</p>
-<p><span class="label">När skedde brottet?</span><br />@Model.CrimeDate</p>
-<p><span class="label">Ditt namn (för- och efternamn):</span><br />@Model.InformersName</p>
-<p><span class="label">Din telefon:</span><br />@Model.Phone</p>
+<p><span class="label">Vilken typ av brott?</span><br />@Model.TypeOfCrime</p>
+<p><span class="label">När skedde brottet?</span><br />@Model.DateOfObservation</p>
+<p><span class="label">Ditt namn (för- och efternamn):</span><br />@Model.InformerName</p>
+<p><span class="label">Din telefon:</span><br />@Model.InformerPhone</p>
 <p><span class="label">Mer information:</span><br />@Model.Observation</p>
 <p>
     <a class="button" asp-controller="Coordinator" asp-action="ReportCrime" id="link">Tillbaka</a> <a class="button" asp-controller="Coordinator" asp-action="Thanks">Bekräfta</a>

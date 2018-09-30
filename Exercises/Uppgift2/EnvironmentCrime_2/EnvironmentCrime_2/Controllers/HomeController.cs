@@ -30,11 +30,11 @@ namespace EnvironmentCrime_2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Validate(ReportCrime reportCrime)
+        public IActionResult Validate(Errand errand)
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Validate", "Citizen", reportCrime);
+                return RedirectToAction("Validate", "Citizen", errand);
             }
             else
             {

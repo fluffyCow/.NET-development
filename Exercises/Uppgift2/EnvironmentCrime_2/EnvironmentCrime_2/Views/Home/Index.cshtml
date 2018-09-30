@@ -2,7 +2,7 @@
     Layout = "_HomeLayout";
 }
 
-@model ReportCrime
+@model Errand
 
 <h2>Välkommen att fylla i din anmälan av miljöbrott</h2>
 <p class="info">I Småstad är inga brott för små för att anmälas</p>
@@ -19,24 +19,24 @@
         <span asp-validation-for="Place" class="error"></span>
     </p>
     <p>
-        <label asp-for="Crime" class="label"></label>
-        <input asp-for="Crime" />
-        <span asp-validation-for="Crime" class="error"></span>
+        <label asp-for="TypeOfCrime" class="label"></label>
+        <input asp-for="TypeOfCrime" />
+        <span asp-validation-for="TypeOfCrime" class="error"></span>
     </p>
     <p>
-        <label asp-for="CrimeDate" class="label"></label>
-        <input asp-for="CrimeDate" />
-        <span asp-validation-for="CrimeDate" class="error"></span>
+        <label asp-for="DateOfObservation" class="label"></label>
+        <input asp-for="DateOfObservation" />
+        <span asp-validation-for="DateOfObservation" class="error"></span>
     </p>
     <p>
-        <label asp-for="InformersName" class="label"></label>
-        <input asp-for="InformersName" />
-        <span asp-validation-for="InformersName" class="error"></span>
+        <label asp-for="InformerName" class="label"></label>
+        <input asp-for="InformerName" />
+        <span asp-validation-for="InformerName" class="error"></span>
     </p>
     <p>
-        <label asp-for="Phone" class="label"></label>
-        <input asp-for="Phone" />
-        <span asp-validation-for="Phone" class="error"></span>
+        <label asp-for="InformerPhone" class="label"></label>
+        <input asp-for="InformerPhone" />
+        <span asp-validation-for="InformerPhone" class="error"></span>
     </p>
     <p>
         <label asp-for="Observation" class="label" ></label>

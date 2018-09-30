@@ -29,9 +29,9 @@ namespace EnvironmentCrime_2.Controllers
             return View("ThanksView");
         }
 
-        public IActionResult Validate(ReportCrime reportCrime)
+        public IActionResult Validate(Errand errand)
         {
-            return View("ValidateView", reportCrime);
+            return View("ValidateView", errand);
         }
 
 

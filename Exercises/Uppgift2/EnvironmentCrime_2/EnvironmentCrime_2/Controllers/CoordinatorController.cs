@@ -38,11 +38,11 @@ namespace EnvironmentCrime_2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Validate(ReportCrime reportCrime)
+        public IActionResult Validate(Errand errand)
         {
             if (ModelState.IsValid)
             {
-                return View("ValidateView", reportCrime);
+                return View("ValidateView", errand);
             }
             else
             {
