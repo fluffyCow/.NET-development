@@ -7,6 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EnvironmentCrime_2.Models
 {
+    /// <summary>
+    /// Class for storing information about an errand
+    /// Also includes data annotations that can be used in forms
+    /// </summary>
     public class Errand
     {
         public String ErrandID{ get; set; }

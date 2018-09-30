@@ -7,8 +7,12 @@ using EnvironmentCrime_2.Models;
 
 namespace EnvironmentCrime_2.Controllers
 {
+    /// <summary>
+    /// Controller for the Coordinators
+    /// </summary>
     public class CoordinatorController : Controller
     {
+        //Repository holding errands, staff, statuses etc.
         private IRepository repository;
 
         public CoordinatorController (IRepository repo)
@@ -21,6 +25,11 @@ namespace EnvironmentCrime_2.Controllers
             return View("StartCoordinatorView", repository);
         }
 
+        /// <summary>
+        /// Display details about a specific crime/errand
+        /// </summary>
+        /// <param name="id">ErrandId</param>
+        /// <returns></returns>
         public IActionResult Crime(String id)
         {
             ViewBag.ErrandId = id;
@@ -37,6 +46,12 @@ namespace EnvironmentCrime_2.Controllers
             return View("ThanksView");
         }
 
+        /// <summary>
+        /// Used for validation the create new errand form. Data is validated and the user is sent to
+        /// the validation page if all ok, otherwise remain on the same page an display errors
+        /// </summary>
+        /// <param name="errand">Errand object send from the form</param>
+        /// <returns>The repostCrime view if validation fails, or a redirect to the validate view</returns>
         [HttpPost]
         public IActionResult Validate(Errand errand)
         {

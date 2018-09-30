@@ -10,6 +10,9 @@ using EnvironmentCrime_2.Models;
 
 namespace EnvironmentCrime_2.Controllers
 {
+    /// <summary>
+    /// Controller for Home
+    /// </summary>
     public class HomeController : Controller
     {
         // GET: /<controller>/
@@ -23,12 +26,12 @@ namespace EnvironmentCrime_2.Controllers
             return View("LoginView");
         }
 
-        [HttpPost]
-        public ViewResult Login(LoginModel credentials)
-        {
-            return View("Index");
-        }
-
+        /// <summary>
+        /// Used for validation the create new errand form. Data is validated and the user is sent to
+        /// the validation page if all ok, otherwise remain on the same page an display errors
+        /// </summary>
+        /// <param name="errand">Errand object send from the form</param>
+        /// <returns>The index view if validation fails, or a redirect to the validate view in the citizen controller</returns>
         [HttpPost]
         public IActionResult Validate(Errand errand)
         {

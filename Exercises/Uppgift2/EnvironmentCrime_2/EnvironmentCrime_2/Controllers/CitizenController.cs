@@ -7,6 +7,9 @@ using EnvironmentCrime_2.Models;
 
 namespace EnvironmentCrime_2.Controllers
 {
+    /// <summary>
+    /// Controller for the Citizen sub pages
+    /// </summary>
     public class CitizenController : Controller
     {
         public IActionResult Contact()

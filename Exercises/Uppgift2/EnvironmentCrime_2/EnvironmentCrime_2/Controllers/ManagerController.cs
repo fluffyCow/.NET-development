@@ -7,6 +7,9 @@ using EnvironmentCrime_2.Models;
 
 namespace EnvironmentCrime_2.Controllers
 {
+    /// <summary>
+    /// Controller for the managers
+    /// </summary>
     public class ManagerController : Controller
     {
         private IRepository repository;
@@ -21,6 +24,11 @@ namespace EnvironmentCrime_2.Controllers
             return View("StartManagerView", repository);
         }
 
+        /// <summary>
+        /// Displays details about a specific errand
+        /// </summary>
+        /// <param name="id">ErrandId</param>
+        /// <returns>a view with the Errand details</returns>
         public IActionResult Crime(String id)
         {
             ViewBag.ErrandId = id;

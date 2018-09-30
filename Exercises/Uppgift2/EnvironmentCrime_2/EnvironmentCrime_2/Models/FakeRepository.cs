@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace EnvironmentCrime_2.Models
 {
+
+    /// <summary>
+    /// Our fake repository. holding data so the application can be testeds
+    /// </summary>
     public class FakeRepository : IRepository
     {
         public IQueryable<Errand> Errands => new List<Errand>
