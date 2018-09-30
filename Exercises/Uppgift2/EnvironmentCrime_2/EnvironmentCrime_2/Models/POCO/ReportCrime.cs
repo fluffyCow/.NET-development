@@ -35,7 +35,7 @@ namespace EnvironmentCrime_2.Models
         [Required(ErrorMessage ="Du måste fylle i ditt telefonnummer")]
         public String Phone { get; set; }
 
-        [Display(Name ="Beskriv din observation<br /> (ex. namn på misstänkt person):")]
+        [Display(Name ="Beskriv din observation (ex. namn på misstänkt person):")]
         public String Observation { get; set; }
 
 
