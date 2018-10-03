@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EnvironmentCrime_2.Models;
+using EnvironmentCrime_3.Models;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace EnvironmentCrime_2.Controllers
+namespace EnvironmentCrime_3.Controllers
 {
     /// <summary>
     /// Controller for Home

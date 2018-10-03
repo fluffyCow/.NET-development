@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace EnvironmentCrime_2.Models
+namespace EnvironmentCrime_3.Models
 {
     /// <summary>
     /// Class for storing information about an errand
