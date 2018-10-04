@@ -26,8 +26,9 @@ namespace EnvironmentCrime_2.Models
         [Display(Name = "När skedde brottet?")]
         [UIHint("Date")]
         [Required(ErrorMessage = "Du måste fylla i när brottet skedde")]
-        public DateTime DateOfObservation { get; set; }
+        public DateTime? DateOfObservation { get; set; }
 
+        [UIHint("")]
         [Display(Name = "Beskriv din observation (ex. namn på misstänkt person):")]
         public String Observation { get; set; }
 
@@ -39,10 +40,11 @@ namespace EnvironmentCrime_2.Models
         [Required(ErrorMessage = "Du måste fylla i ditt namn")]
         public String InformerName { get; set; }
 
+        //Todo make a better error when regex fails
         [Display(Name = "Din telefon:")]
         [UIHint("PhonerNumber")]
-        [RegularExpression(@"^[0]{1}[0-9]{1,3}-[0-9]{5,9}$")]
-        [Required(ErrorMessage = "Du måste fylle i ditt telefonnummer")]
+        [RegularExpression(@"^[0]{1}[0-9]{1,3}-[0-9]{5,9}$", ErrorMessage = "Fyll i ett vettigt telefonnummer istället")]
+        [Required(ErrorMessage = "Du måste fylla i ditt telefonnummer")]
         public String InformerPhone { get; set; }
 
         public String StatusId { get; set; }
