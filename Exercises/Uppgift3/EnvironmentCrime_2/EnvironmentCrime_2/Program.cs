@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using EnvironmentCrime_3.Models;
+using Microsoft.AspNetCore;
 
 namespace EnvironmentCrime_3
 {
@@ -14,7 +16,25 @@ namespace EnvironmentCrime_3
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            //            BuildWebHost(args).Run();
+
+            IWebHost host = CreateWebHostBuilder(args).Build();
+            
+            using(var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    DBInitializer.EnsurePopulated(context);
+                }
+                catch(Exception e)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(e, "An error occured while initializing the database");
+                }
+            }
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

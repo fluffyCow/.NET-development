@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EnvironmentCrime_3.Models
 {
@@ -13,6 +14,7 @@ namespace EnvironmentCrime_3.Models
         /// <summary>
         /// The id of the status
         /// </summary>
+        [Key]
         public String StatusId { get; set; }
 
         /// <summary>

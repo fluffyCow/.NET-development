@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace EnvironmentCrime_3.Models
@@ -13,7 +14,13 @@ namespace EnvironmentCrime_3.Models
     /// </summary>
     public class Errand
     {
-        public String ErrandID{ get; set; }
+        [Key]
+        //Internal id in the database
+        public int ErrandID{ get; set; }
+
+        //år-45-löpnummer
+        //Called errandId in the application
+        public String RefNumber { get; set; }
 
         [Display(Name = "Var har brottet skett någonstans?")]
         [Required(ErrorMessage = "Du måste fylla i var brottet skett")]
@@ -25,6 +32,8 @@ namespace EnvironmentCrime_3.Models
         
         [Display(Name = "När skedde brottet?")]
         [UIHint("Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Required(ErrorMessage = "Du måste fylla i när brottet skedde")]
         public DateTime DateOfObservation { get; set; }
 
@@ -45,6 +54,8 @@ namespace EnvironmentCrime_3.Models
         [Required(ErrorMessage = "Du måste fylle i ditt telefonnummer")]
         public String InformerPhone { get; set; }
 
+//        [ForeignKey("StatusId")]
+//        public virtual ErrandStatus StatusId { get; set; }
         public String StatusId { get; set; }
 
         public String DepartmentId { get; set; }
