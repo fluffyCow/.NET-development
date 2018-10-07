@@ -28,11 +28,11 @@ namespace EnvironmentCrime_3.Models
         /// </summary>
         /// <param name="id">ErrandID</param>
         /// <returns>Details about one errand</returns>
-        public Task<Errand> GetErrandDetail(String id)
+        public Task<Errand> GetErrandDetail(int id)
         {
             return Task.Run(() =>
             {
-                var errand = Errands.Where(e => e.RefNumber == id).First();
+                var errand = Errands.Where(e => e.ErrandID == id).First();
                 return errand;
             });
         }

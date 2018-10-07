@@ -25,7 +25,7 @@ namespace EnvironmentCrime_3.Components
         /// </summary>
         /// <param name="id">errandId for the errand that should be listed</param>
         /// <returns>The view DisplayErrand together with an errand object containing information about the specific errand</returns>
-        public async Task<IViewComponentResult> InvokeAsync(String id)
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
             //Get details about the errand from the repository
             var errand = await repository.GetErrandDetail(id);    

@@ -29,7 +29,7 @@ namespace EnvironmentCrime_3.Controllers
         /// </summary>
         /// <param name="id">ErrandId</param>
         /// <returns>a view with the Errand details</returns>
-        public IActionResult Crime(String id)
+        public IActionResult Crime(int id)
         {
             ViewBag.ErrandId = id;
             return View("CrimeView", repository);
