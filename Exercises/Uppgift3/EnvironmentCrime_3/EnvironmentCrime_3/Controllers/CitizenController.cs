@@ -29,6 +29,8 @@ namespace EnvironmentCrime_3.Controllers
 
         public IActionResult Thanks()
         {
+            //Remove the errand after is has been saved to the db
+            HttpContext.Session.Remove("NewErrand");
             return View("ThanksView");
         }
 

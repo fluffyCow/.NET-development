@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using EnvironmentCrime_3.Models;
+using EnvironmentCrime_3.Infrastructure;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,8 +16,16 @@ namespace EnvironmentCrime_3.Controllers
 
         public IActionResult Index()
         {
-            return View("Index");
+            var errand = HttpContext.Session.GetJson<Errand>("NewErrand");
 
+            if(errand == null)
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View("Index", errand);
+            }
         }
 
         /// <summary>
@@ -32,6 +38,7 @@ namespace EnvironmentCrime_3.Controllers
         [HttpPost]
         public IActionResult Index(Errand errand)
         {
+            HttpContext.Session.SetJson("NewErrand", errand); 
             if (ModelState.IsValid)
             {
                 //Sort of ok sollution to return the view instead of going through the controller here

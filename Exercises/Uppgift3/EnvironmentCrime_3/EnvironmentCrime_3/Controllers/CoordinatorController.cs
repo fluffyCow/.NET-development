@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EnvironmentCrime_3.Models;
+using EnvironmentCrime_3.Infrastructure;
 
 namespace EnvironmentCrime_3.Controllers
 {
@@ -38,11 +39,39 @@ namespace EnvironmentCrime_3.Controllers
 
         public IActionResult ReportCrime()
         {
-            return View("ReportCrimeView");
+            
+            var errand = HttpContext.Session.GetJson<Errand>("NewErrand");
+
+            if (errand == null)
+            {
+                return View("ReportCrimeView");
+            }
+            else
+            {
+                return View("ReportCrimeView", errand);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ReportCrime(Errand errand)
+        {
+            HttpContext.Session.SetJson("NewErrand", errand);
+
+            if (ModelState.IsValid)
+            {
+                //Sort of ok sollution to return the view instead of going through the controller here
+                return View("ValidateView", errand);
+            }
+            else
+            {
+                return View("ReportCrimeView");
+            }
         }
 
         public IActionResult Thanks()
         {
+            //Remove the errand after is has been saved to the db
+            HttpContext.Session.Remove("NewErrand");
             return View("ThanksView");
         }
 
@@ -55,14 +84,7 @@ namespace EnvironmentCrime_3.Controllers
         [HttpPost]
         public IActionResult Validate(Errand errand)
         {
-            if (ModelState.IsValid)
-            {
-                return View("ValidateView", errand);
-            }
-            else
-            {
-                return View("ReportCrimeView");
-            }
+            return View("ValidateView", errand);
         }
     }
 }

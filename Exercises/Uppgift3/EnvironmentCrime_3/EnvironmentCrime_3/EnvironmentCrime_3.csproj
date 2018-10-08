@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>EnvironmentCrime_2</AssemblyName>
+    <AssemblyName>EnvironmentCrime_3</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
