@@ -1,0 +1,7 @@
+﻿<select name="status">
+    <option selected="selected">Välj alla</option>
+    @foreach (ErrandStatus s in Model.ErrandStatuses)
+    {
+        <option value=@s.StatusId>@s.StatusName</option>
+    }
+</select>

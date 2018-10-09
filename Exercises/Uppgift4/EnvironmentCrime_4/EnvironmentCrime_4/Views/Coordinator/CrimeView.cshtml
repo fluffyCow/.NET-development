@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "CrimeCoordinatorView";
+    Layout = "_CoordinatorLayout";
+}
+
+@model IRepository
+
+
+<h2>Detaljer för ärendet</h2>
+<p class="info">Du är inloggad som samordnare</p>
+
+@await  Component.InvokeAsync("DisplayErrand", ViewBag.ErrandId)
+
+<section id="bottomColumn">
+    <h3>Redigera ärende</h3>
+    <p>
+        Ange enhet:
+        @await Html.PartialAsync("_DepartmentDropDownLayout")
+    </p>
+    <p><input class="button" type="submit" value="Spara" /></p>
+</section>

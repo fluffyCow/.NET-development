@@ -1,0 +1,54 @@
+﻿
+    @{
+        ViewData["Title"] = "StartCoordinatorView";
+        Layout = "_CoordinatorLayout";
+    }
+
+
+    <h2>Ärenden</h2>
+    <p class="info">Du är inloggad som samordnare</p>
+
+    <table id="managerForm">
+        <tr>
+            <td class="label">Välj status:</td>
+            <td class="label">Välj avdelning:</td>
+            <td>&nbsp;</td>
+            <td class="label">Ärendenummer:</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                @await Html.PartialAsync("_StatusDropDownLayout")
+            </td>
+            <td>
+                @await Html.PartialAsync("_DepartmentDropDownLayout")
+            </td>
+            <td><input class="button" type="submit" value="Hämta lista" /></td>
+            <td><input name="casenumber" /></td>
+            <td><input class="button" type="submit" value="Sök" /></td>
+        </tr>
+    </table>
+
+    <!--Nedan ser man en lista på ärenden-->
+    <table>
+        <tr>
+            <th>Ärende anmält</th>
+            <th>Ärendenummer</th>
+            <th>Miljöbrott</th>
+            <th>Status</th>
+            <th>Avdelning</th>
+            <th>Handläggare</th>
+        </tr>
+        @foreach (Errand e in Model.Errands)
+        {
+            <tr>
+                <td>@e.DateOfObservation</td>
+                <td><a asp-controller="Coordinator" asp-action="Crime" asp-route-id=@e.ErrandID> @e.RefNumber </a></td>
+                <td>@e.TypeOfCrime</td>
+                <td>@e.StatusId</td>
+                <td>@e.DepartmentId</td>
+                <td>@e.EmployeeId</td>
+            </tr>
+        }
+    </table>
+
