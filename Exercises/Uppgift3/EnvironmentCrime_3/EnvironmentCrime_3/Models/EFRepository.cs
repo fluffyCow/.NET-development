@@ -22,6 +22,67 @@ namespace EnvironmentCrime_3.Models
         public IQueryable<Picture> Pictures => context.Pictures;
         public IQueryable<Sequence> Sequences => context.Sequences;
 
+        /// <summary>
+        /// Gives you the next available errandId
+        /// </summary>
+        /// <returns></returns>
+        private String GetCurrentErrandRefNumber()
+        {
+            //Do we need id = 1? There should only be one entry here
+            var seq = Sequences.Where(s => s.Id == 1).First();
+
+            if (seq != null)
+            {
+                //Pattern YY-45-ID. Ex 2018-45-200
+                return DateTime.Now.Year +"-"+ "45" +"-"+ seq.CurrentValue; ;
+            } else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Increase the sequence number. If there is none, set it to default value 200
+        /// </summary>
+        private void IncreaseErrandRefNumber()
+        {
+            //var s =// context.Sequences.FirstOrDefault(); Sequences.Where(s => seq.id == 1).First();
+
+            var s = Sequences.Where(seq => seq.Id == 1).First();
+
+            if (s != null)
+            {
+                s.CurrentValue = s.CurrentValue+1;
+            } else
+            {
+                //If the database is empty add an id with default value 200
+                s = new Sequence();
+                context.Sequences.Add(s);
+            }
+            context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Saves an errand to the database
+        /// </summary>
+        /// <param name="e">The errand object</param>
+        /// <returns>the ErrandId of the newly created errand</returns>
+        public String SaveErrand(Errand e)
+        {
+            if (e.ErrandID == 0)
+            {
+                //Give the errand a new refnumber
+                e.RefNumber = GetCurrentErrandRefNumber();
+                IncreaseErrandRefNumber();
+
+                //Set statusid of the errand to S_A
+                e.StatusId = "S_A";
+
+                context.Errands.Add(e);
+            }
+            context.SaveChanges();
+            return e.RefNumber;
+        }
 
         /// <summary>
         /// Task that returns one errand with id 

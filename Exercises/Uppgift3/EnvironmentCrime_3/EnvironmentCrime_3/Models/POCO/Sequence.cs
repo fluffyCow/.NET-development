@@ -8,6 +8,14 @@ namespace EnvironmentCrime_3.Models
 {
     public class Sequence
     {
+        /// <summary>
+        /// If there are no Errandsequence set up. create one with id 200
+        /// </summary>
+        public Sequence()
+        {
+            CurrentValue = 200;
+        }
+
         [Key]
         public int Id { get; set; }
         public int CurrentValue { get; set; }

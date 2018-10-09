@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EnvironmentCrime_3.Models;
+using EnvironmentCrime_3.Infrastructure;
 
 namespace EnvironmentCrime_3.Controllers
 {
@@ -12,6 +13,14 @@ namespace EnvironmentCrime_3.Controllers
     /// </summary>
     public class CitizenController : Controller
     {
+        //Repository holding errands, staff, statuses etc.
+        private IRepository repository;
+
+        public CitizenController(IRepository repo)
+        {
+            repository = repo;
+        }
+
         public IActionResult Contact()
         {
             return View("ContactView");
@@ -29,8 +38,13 @@ namespace EnvironmentCrime_3.Controllers
 
         public IActionResult Thanks()
         {
+            var e = HttpContext.Session.GetJson<Errand>("NewErrand");
+
+            //Save the errand to the database
+            ViewBag.RefNumber = repository.SaveErrand(e);
             //Remove the errand after is has been saved to the db
             HttpContext.Session.Remove("NewErrand");
+
             return View("ThanksView");
         }
 

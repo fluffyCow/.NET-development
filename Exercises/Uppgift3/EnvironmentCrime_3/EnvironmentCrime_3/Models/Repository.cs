@@ -22,5 +22,7 @@ namespace EnvironmentCrime_3.Models
         IQueryable<Sequence> Sequences {get;}
 
         Task<Errand> GetErrandDetail(int  id);
+
+        String SaveErrand(Errand errand);
     }
  }
