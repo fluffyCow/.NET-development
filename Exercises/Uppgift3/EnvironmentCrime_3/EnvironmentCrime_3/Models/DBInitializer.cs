@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace EnvironmentCrime_3.Models
 {
+    /// <summary>
+    /// Initializes out database with some test data
+    /// </summary>
     public class DBInitializer
     {
         public static void EnsurePopulated(ApplicationDbContext context)

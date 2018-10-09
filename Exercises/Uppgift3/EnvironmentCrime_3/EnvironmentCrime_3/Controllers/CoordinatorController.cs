@@ -70,6 +70,11 @@ namespace EnvironmentCrime_3.Controllers
 
         public IActionResult Thanks()
         {
+            var e = HttpContext.Session.GetJson<Errand>("NewErrand");
+
+            //Save the errand to the database
+            ViewBag.RefNumber = repository.SaveErrand(e);
+
             //Remove the errand after is has been saved to the db
             HttpContext.Session.Remove("NewErrand");
             return View("ThanksView");

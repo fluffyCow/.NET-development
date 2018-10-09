@@ -28,12 +28,13 @@ namespace EnvironmentCrime_3.Models
         /// <returns></returns>
         private String GetCurrentErrandRefNumber()
         {
-            //Do we need id = 1? There should only be one entry here
+            //get the Current IDvalue, stored with ID=1, There are some trash data in this table that should be ignored.
             var seq = Sequences.Where(s => s.Id == 1).First();
 
             if (seq != null)
             {
-                //Pattern YY-45-ID. Ex 2018-45-200
+                //return the current reference number based on the
+                //pattern YY-45-ID. Ex 2018-45-200
                 return DateTime.Now.Year +"-"+ "45" +"-"+ seq.CurrentValue; ;
             } else
             {
@@ -46,12 +47,12 @@ namespace EnvironmentCrime_3.Models
         /// </summary>
         private void IncreaseErrandRefNumber()
         {
-            //var s =// context.Sequences.FirstOrDefault(); Sequences.Where(s => seq.id == 1).First();
-
+            //Get the current row
             var s = Sequences.Where(seq => seq.Id == 1).First();
 
             if (s != null)
             {
+                //Increment the value
                 s.CurrentValue = s.CurrentValue+1;
             } else
             {
@@ -78,9 +79,12 @@ namespace EnvironmentCrime_3.Models
                 //Set statusid of the errand to S_A
                 e.StatusId = "S_A";
 
+                //Add it to the db
                 context.Errands.Add(e);
             }
             context.SaveChanges();
+
+            //Return the reference number of the new errand
             return e.RefNumber;
         }
 

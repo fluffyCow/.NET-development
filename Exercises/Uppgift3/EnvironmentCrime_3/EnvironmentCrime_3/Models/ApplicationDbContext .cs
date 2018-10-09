@@ -11,10 +11,15 @@ namespace EnvironmentCrime_3.Models
     /// </summary>
     public class ApplicationDbContext : DbContext
     {
+        /// <summary>
+        /// Create a context for our database connection
+        /// </summary>
+        /// <param name="options"></param>
         public ApplicationDbContext
             (DbContextOptions<ApplicationDbContext> options) 
             : base(options) { }
 
+        //The objects/tables being used in the database
         public DbSet<Errand> Errands { get; set; }
         public DbSet<ErrandStatus> ErrandStatuses { get; set; }
         public DbSet<Employee>  Employees{ get; set; }
