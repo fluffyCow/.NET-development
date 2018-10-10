@@ -50,7 +50,7 @@ namespace EnvironmentCrime_3.Models
 
         [Display(Name = "Din telefon:")]
         [UIHint("PhonerNumber")]
-        [RegularExpression(@"^[0]{1}[0-9]{1,3}-[0-9]{5,9}$")]
+        [RegularExpression(@"^[0]{1}[0-9]{1,3}-[0-9]{5,9}$", ErrorMessage = "Fyll i ett vettigt telefonnummer istället")]
         [Required(ErrorMessage = "Du måste fylle i ditt telefonnummer")]
         public String InformerPhone { get; set; }
 
