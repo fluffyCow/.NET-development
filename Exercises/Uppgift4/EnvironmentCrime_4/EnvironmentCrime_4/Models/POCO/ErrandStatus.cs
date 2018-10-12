@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace EnvironmentCrime_3.Models
+namespace EnvironmentCrime_4.Models
 {
     /// <summary>
     /// Class holding information about available statuses for errands
@@ -21,5 +21,7 @@ namespace EnvironmentCrime_3.Models
         /// The name of the status
         /// </summary>
         public String StatusName { get; set; }
+
+        public List<Errand> Errand { get; set; }
     }
 }

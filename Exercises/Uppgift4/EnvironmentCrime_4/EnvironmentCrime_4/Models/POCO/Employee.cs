@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EnvironmentCrime_3.Models
+
+namespace EnvironmentCrime_4.Models
 {
     /// <summary>
     /// Class hoding information about an employee
@@ -14,11 +16,13 @@ namespace EnvironmentCrime_3.Models
         /// <summary>
         /// The If of the employee
         /// </summary>
+        [Key]
         public String EmployeeId { get; set; }
 
         /// <summary>
         /// The name of the employee
         /// </summary>
+        [Required]
         public String EmployeeName { get; set; }
 
         /// <summary>
@@ -29,7 +33,11 @@ namespace EnvironmentCrime_3.Models
         /// <summary>
         /// The department where the employee works
         /// </summary>
-        public String DepartmentId { get; set; }
 
+        [ForeignKey("DepartmentId")]
+        public String DepartmentId { get; set; }
+        public Department Department { get; set; }
+
+        public ICollection<Errand> Errand { get; set; }
     }
 }

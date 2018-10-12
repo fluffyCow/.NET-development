@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace EnvironmentCrime_3.Models
+namespace EnvironmentCrime_4.Models
 {
     /// <summary>
     /// Bridge between EF and EnvironemntCrime

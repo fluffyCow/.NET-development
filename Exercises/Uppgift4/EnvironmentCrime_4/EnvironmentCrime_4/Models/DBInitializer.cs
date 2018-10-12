@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EnvironmentCrime_3.Models
+namespace EnvironmentCrime_4.Models
 {
     /// <summary>
     /// Initializes out database with some test data
@@ -35,7 +35,7 @@ namespace EnvironmentCrime_3.Models
                 );
                 context.SaveChanges();
             }
-            
+
             if (!context.Sequences.Any())
             {
                 context.Sequences.Add(
@@ -43,7 +43,7 @@ namespace EnvironmentCrime_3.Models
                   );
                 context.SaveChanges();
             }
-    
+
 
             if (!context.Employees.Any())
             {

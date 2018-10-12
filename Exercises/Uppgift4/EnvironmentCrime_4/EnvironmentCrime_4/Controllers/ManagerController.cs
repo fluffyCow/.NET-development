@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EnvironmentCrime_3.Models;
+using EnvironmentCrime_4.Models;
 
-namespace EnvironmentCrime_3.Controllers
+namespace EnvironmentCrime_4.Controllers
 {
     /// <summary>
     /// Controller for the managers

@@ -13,7 +13,7 @@ html, body
 body {
     color: #362f2d;
     font: 90% Arial, sans-serif;
-    background: #e0e0e0 url(C:/Users/davta/OneDrive/Studier/.NET-development/Exercises/Uppgift1/EnvironmentCrime_Uppgift1/EnvironmentCrime_3/EnvironmentCrime_3/wwwroot/images/background.png) repeat scroll left top;
+    background: #e0e0e0 url(C:/Users/davta/OneDrive/Studier/.NET-development/Exercises/Uppgift1/EnvironmentCrime_Uppgift1/EnvironmentCrime_4/EnvironmentCrime_4/wwwroot/images/background.png) repeat scroll left top;
 }
 
 /* Headers
@@ -98,7 +98,7 @@ th, td
 .button {
     color: #ffffff;
     text-decoration: none;
-    background: #309c3f url(C:/Users/davta/OneDrive/Studier/.NET-development/Exercises/Uppgift1/EnvironmentCrime_Uppgift1/EnvironmentCrime_3/EnvironmentCrime_3/wwwroot/images/button.png) repeat-x scroll left top;
+    background: #309c3f url(C:/Users/davta/OneDrive/Studier/.NET-development/Exercises/Uppgift1/EnvironmentCrime_Uppgift1/EnvironmentCrime_4/EnvironmentCrime_4/wwwroot/images/button.png) repeat-x scroll left top;
     width: auto;
     padding: 0.5em 1em;
     border: 1px solid #20692a;
@@ -183,7 +183,7 @@ header h1, header p
 /* Navigation
  *********************************************/
 nav {
-    background: #362f2d url(C:/Users/davta/OneDrive/Studier/.NET-development/Exercises/Uppgift1/EnvironmentCrime_Uppgift1/EnvironmentCrime_3/EnvironmentCrime_3/wwwroot/images/menu.png) repeat-x scroll left top;
+    background: #362f2d url(C:/Users/davta/OneDrive/Studier/.NET-development/Exercises/Uppgift1/EnvironmentCrime_Uppgift1/EnvironmentCrime_4/EnvironmentCrime_4/wwwroot/images/menu.png) repeat-x scroll left top;
     list-style: none;
     padding: 1em 1em;
     margin: 0;

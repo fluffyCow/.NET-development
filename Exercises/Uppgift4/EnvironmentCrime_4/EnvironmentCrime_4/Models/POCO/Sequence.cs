@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace EnvironmentCrime_3.Models
+namespace EnvironmentCrime_4.Models
 {
     public class Sequence
     {

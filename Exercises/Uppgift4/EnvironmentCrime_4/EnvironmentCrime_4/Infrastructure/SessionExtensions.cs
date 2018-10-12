@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace EnvironmentCrime_3.Infrastructure
+namespace EnvironmentCrime_4.Infrastructure
 {
     public static class SessionExtensions
     {

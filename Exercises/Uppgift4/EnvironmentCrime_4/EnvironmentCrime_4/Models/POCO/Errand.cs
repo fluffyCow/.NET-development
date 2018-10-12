@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace EnvironmentCrime_3.Models
+namespace EnvironmentCrime_4.Models
 {
     /// <summary>
     /// Class for storing information about an errand
@@ -54,14 +54,20 @@ namespace EnvironmentCrime_3.Models
         [Required(ErrorMessage = "Du måste fylle i ditt telefonnummer")]
         public String InformerPhone { get; set; }
 
-//        [ForeignKey("StatusId")]
-//        public virtual ErrandStatus StatusId { get; set; }
+        [ForeignKey("StatusId")]
         public String StatusId { get; set; }
-
+        public ErrandStatus ErrandStatus { get; set; }
+        
+        [ForeignKey("DepartmentId")]
         public String DepartmentId { get; set; }
+        public Department Department { get; set; }
 
+
+        [ForeignKey("EmployeeId")]
         public String EmployeeId { get; set; }
+        public Employee Employee { get; set; }
 
+        [NotMapped]
         [UIHint("HiddenInput")]
         public bool IsSubmitted { get; set; }
         
