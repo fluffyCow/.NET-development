@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace EnvironmentCrime_4.Models
 {
@@ -68,24 +69,32 @@ namespace EnvironmentCrime_4.Models
         /// </summary>
         /// <param name="e">The errand object</param>
         /// <returns>the ErrandId of the newly created errand</returns>
-        public String SaveErrand(Errand e)
+        public String SaveErrand(Errand errand)
         {
-            if (e.ErrandID == 0)
+            if (errand.ErrandID == 0)
             {
                 //Give the errand a new refnumber
-                e.RefNumber = GetCurrentErrandRefNumber();
+                errand.RefNumber = GetCurrentErrandRefNumber();
                 IncreaseErrandRefNumber();
 
                 //Set statusid of the errand to S_A
-                e.StatusId = "S_A";
+                errand.StatusId = "S_A";
 
                 //Add it to the db
-                context.Errands.Add(e);
+                context.Errands.Add(errand);
+            } else
+            {
+                Errand dbEntry = context.Errands.FirstOrDefault(e => e.ErrandID == errand.ErrandID);
+                if(dbEntry != null)
+                {
+                    dbEntry = errand;
+                }
+
             }
             context.SaveChanges();
 
             //Return the reference number of the new errand
-            return e.RefNumber;
+            return errand.RefNumber;
         }
 
         /// <summary>
@@ -100,6 +109,13 @@ namespace EnvironmentCrime_4.Models
                 var errand = Errands.Where(e => e.ErrandID == id).First();
                 return errand;
             });
+        }
+
+        public Errand getErrand(int id)
+        {
+            var errand = Errands.Where(e => e.ErrandID == id).First();
+                        
+            return errand;
         }
     }
 }

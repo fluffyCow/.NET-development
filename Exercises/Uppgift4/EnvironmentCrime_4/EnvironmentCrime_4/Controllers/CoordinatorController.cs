@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EnvironmentCrime_4.Models;
 using EnvironmentCrime_4.Infrastructure;
+using System.Collections;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EnvironmentCrime_4.Controllers
 {
@@ -33,13 +35,23 @@ namespace EnvironmentCrime_4.Controllers
         /// <returns></returns>
         public IActionResult Crime(int id)
         {
+            //List of departments used in the drop down list, Except D00
+            ViewBag.DepartmentList = repository.Departments.Where(d => d.DepartmentId != "D00");
+
+            //Save the errand ID in the session so we know which errand to update
+            HttpContext.Session.SetJson("ErrandId", id);
+
+            //Send the errand id in the viewbag (used in component)
             ViewBag.ErrandId = id;
-            return View("CrimeView", repository);
+            return View("CrimeView");//, repository);
         }
 
+        /// <summary>
+        /// Display the report crime page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult ReportCrime()
         {
-            
             var errand = HttpContext.Session.GetJson<Errand>("NewErrand");
 
             if (errand == null)
@@ -59,7 +71,7 @@ namespace EnvironmentCrime_4.Controllers
 
             if (ModelState.IsValid)
             {
-                //Sort of ok sollution to return the view instead of going through the controller here
+                //Sort of ok solution to return the view instead of going through the controller here
                 return View("ValidateView", errand);
             }
             else
@@ -68,6 +80,10 @@ namespace EnvironmentCrime_4.Controllers
             }
         }
 
+        /// <summary>
+        /// Save the new errand to the database and display thank you
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Thanks()
         {
             var e = HttpContext.Session.GetJson<Errand>("NewErrand");
@@ -90,6 +106,35 @@ namespace EnvironmentCrime_4.Controllers
         public IActionResult Validate(Errand errand)
         {
             return View("ValidateView", errand);
+        }
+
+        /// <summary>
+        /// Update an existing errand with a new department
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult SaveErrand(Department department)
+        {
+            if (department.DepartmentId != "NULL" && department.DepartmentId != "D00")
+            {
+                //Fetch the errandID from session
+                int errandId = HttpContext.Session.GetJson<int>("ErrandId");
+
+                Errand errand = repository.getErrand(errandId);
+
+                //Update the errand with a new department
+                errand.DepartmentId = department.DepartmentId;
+
+                //Save the changes to the database. Ignore output
+                repository.SaveErrand(errand);
+
+                //Remove the errand from the session
+                HttpContext.Session.Remove("ErrandId");
+            }
+
+            //Go back to the start view
+            return View("StartCoordinatorView", repository);
         }
     }
 }

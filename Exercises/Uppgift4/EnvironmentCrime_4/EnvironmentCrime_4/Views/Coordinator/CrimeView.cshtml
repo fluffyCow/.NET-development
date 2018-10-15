@@ -4,7 +4,7 @@
     Layout = "_CoordinatorLayout";
 }
 
-@model IRepository
+@model Department
 
 
 <h2>Detaljer för ärendet</h2>
@@ -15,8 +15,13 @@
 <section id="bottomColumn">
     <h3>Redigera ärende</h3>
     <p>
-        Ange enhet:
-        @await Html.PartialAsync("_DepartmentDropDownLayout")
+        Ange enhet: 
     </p>
-    <p><input class="button" type="submit" value="Spara" /></p>
+    <form asp-controller="Coordinator" asp-action="SaveErrand" method="Post">
+        <select asp-for="DepartmentId"
+                asp-items="@(new SelectList(ViewBag.DepartmentList, "DepartmentId", "DepartmentName"))">
+            <option value="NULL">Välj enhet</option>
+        </select>
+        <p><input class="button" type="submit" value="Spara" /></p>
+    </form>
 </section>
