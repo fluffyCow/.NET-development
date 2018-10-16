@@ -40,8 +40,10 @@ namespace EnvironmentCrime_4.Models
         [Display(Name = "Beskriv din observation (ex. namn på misstänkt person):")]
         public String Observation { get; set; }
 
+        [Display(Name = "Ingen åtgärd:")]
         public String InvestigatorAction { get; set; }
 
+        [Display(Name = "Ange motivering")]
         public String InvestigatorInfo { get; set; }
 
         [Display(Name = "Ditt namn (för- och efternamn):")]

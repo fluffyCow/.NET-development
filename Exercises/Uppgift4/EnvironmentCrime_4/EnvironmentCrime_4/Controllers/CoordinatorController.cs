@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using EnvironmentCrime_4.Models;
 using EnvironmentCrime_4.Infrastructure;
-using System.Collections;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EnvironmentCrime_4.Controllers
 {
@@ -35,7 +30,7 @@ namespace EnvironmentCrime_4.Controllers
         /// <returns></returns>
         public IActionResult Crime(int id)
         {
-            //List of departments used in the drop down list, Except D00
+            //List of departments used in the drop down list, Except D00 - should not be used
             ViewBag.DepartmentList = repository.Departments.Where(d => d.DepartmentId != "D00");
 
             //Save the errand ID in the session so we know which errand to update
@@ -116,7 +111,8 @@ namespace EnvironmentCrime_4.Controllers
         [HttpPost]
         public IActionResult SaveErrand(Department department)
         {
-            if (department.DepartmentId != "NULL" && department.DepartmentId != "D00")
+            //Only save if we have data
+            if (department.DepartmentId != "NULL")
             {
                 //Fetch the errandID from session
                 int errandId = HttpContext.Session.GetJson<int>("ErrandId");
@@ -128,10 +124,9 @@ namespace EnvironmentCrime_4.Controllers
 
                 //Save the changes to the database. Ignore output
                 repository.SaveErrand(errand);
-
-                //Remove the errand from the session
-                HttpContext.Session.Remove("ErrandId");
             }
+            //Remove the errand from the session
+            HttpContext.Session.Remove("ErrandId");
 
             //Go back to the start view
             return View("StartCoordinatorView", repository);

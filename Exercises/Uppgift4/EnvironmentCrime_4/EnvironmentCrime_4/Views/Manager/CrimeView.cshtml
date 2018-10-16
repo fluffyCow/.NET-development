@@ -4,16 +4,29 @@
     Layout = "_ManagerLayout";
 }
 
+@model ManagerFormHelper
+
 <h2>Detaljer för ärendet</h2>
 <p class="info">Du är inloggad som avdelningschef</p>
 @await Component.InvokeAsync("DisplayErrand", ViewBag.ErrandId)
 
 <section id="bottomColumn">
     <h3>Redigera ärende</h3>
-    <p>
-        Ange handläggare:
-        @await Html.PartialAsync("_InvestigatorDropDownLayout")
-    </p>
-    <p><input type="checkbox" name="noAction" value="true" /> Ingen åtgärd: <input type="text" name="reason" value="Ange motivering" /></p>
-    <p><input class="button" type="submit" value="Spara" /></p>
+
+    <form asp-controller="Manager" asp-action="SaveErrand" method="Post">
+        <p>
+
+            <select asp-for="EmployeeId"
+                    asp-items="@(new SelectList(ViewBag.EmployeeList, "EmployeeId", "EmployeeName"))">
+                <option value="NULL">Välj alla</option>
+            </select>
+        </p>
+        <p>
+        <label asp-for="NoAction"></label>
+        <input type="checkbox" asp-for="NoAction" />
+        <label asp-for="Reason"></label>
+        <input asp-for="Reason" />
+        </p>
+        <p><input class="button" type="submit" value="Spara" /></p>
+    </form>
 </section>
