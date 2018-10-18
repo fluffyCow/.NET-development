@@ -4,7 +4,7 @@
     Layout = "_InvestigatorLayout";
 }
 
-@model Errand
+@model InvestigatorFormHelper
 
 <h2>Detaljer för ärendet</h2>
 <p class="info">Du är inloggad som handläggare</p>
@@ -13,27 +13,39 @@
 
 <section id="bottomColumn">
     <h3>Redigera ärende</h3>
-    <form asp-controller="Investigator" asp-action="SaveErrand" method="Post">
-        <p class="label">Händelser:</p>
-        <textarea name="events" rows="5" cols="60"></textarea>
+ 
+    <form method="post" enctype="multipart/form-data" multiple asp-controller="Investigator" asp-action="UploadFiles">
 
-        <p class="label">Mer information:</p>
-        <textarea name="information" rows="5" cols="60"></textarea>
+        <p>
+            <label asp-for="InvestigatorAction" class="label"></label>
+            <textarea asp-for="InvestigatorAction" rows="5" cols="16"></textarea>
+            <span asp-validation-for="InvestigatorAction" class="error"></span>
+        </p>
 
-        <p class="label">Prover:</p>
-        <input type="file" name="loadSample" />
+        <p>
+            <label asp-for="InvestigatorInfo" class="label"></label>
+            <textarea asp-for="InvestigatorInfo" rows="5" cols="16"></textarea>
+            <span asp-validation-for="InvestigatorInfo" class="error"></span>
+        </p>
 
-        <p class="label">Ladda upp bilder:</p>
-        <input type="file" name="loadImage" />
+        <p>
+            <label asp-for="ImageFile" class="label"></label>
+            <input type="file" name="ImageFile" />
+        </p>
 
-        <p class="label">Ändring av status:</p>
+        <p>
+            <label asp-for="SampleFile" class="label"></label>
+            <input type="file" name="SampleFile" />
+        </p>
 
         <select asp-for="StatusId"
                 asp-items="@(new SelectList(ViewBag.StatusList, "StatusId", "StatusName"))">
-            <option value="NULL">Välj status</option>
+            <option value="">Välj status</option>
         </select>
+
         <p>
             <input class="button" type="submit" value="Spara ändringarna" />
         </p>
-     </form>
+    </form>
+
 </section>

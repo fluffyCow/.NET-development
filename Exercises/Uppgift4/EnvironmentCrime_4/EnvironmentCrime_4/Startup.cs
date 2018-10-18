@@ -10,6 +10,8 @@ using EnvironmentCrime_4.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace EnvironmentCrime_4
 {
@@ -19,7 +21,10 @@ namespace EnvironmentCrime_4
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Find wwwroot
+            services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -28,7 +33,7 @@ namespace EnvironmentCrime_4
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromSeconds(999);
                 options.Cookie.HttpOnly = true;
             });
 
@@ -44,7 +49,14 @@ namespace EnvironmentCrime_4
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
             
-            app.UseMvc();
+                app.UseMvc(routes =>
+                {
+                    routes.MapRoute(
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}");
+                });
+
+                app.UseMvc();
         }
 
         public IConfiguration Configuration { get; }

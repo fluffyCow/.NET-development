@@ -32,5 +32,7 @@ namespace EnvironmentCrime_4.Models
         /// <param name="Id">ErrandId (int)</param>
         /// <returns>errand object with the ID</returns>
         Errand getErrand(int Id);
+
+        String SaveObjectToDB(Object o);
     }
  }

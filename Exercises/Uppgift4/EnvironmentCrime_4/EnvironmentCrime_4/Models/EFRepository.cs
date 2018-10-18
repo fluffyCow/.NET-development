@@ -117,5 +117,25 @@ namespace EnvironmentCrime_4.Models
                         
             return errand;
         }
+
+        /// <summary>
+        /// Save an object to the db
+        /// </summary>
+        /// <param name="o"></param>
+        public String SaveObjectToDB(Object o)
+        {
+            if (o is Errand)
+            {
+                return SaveErrand(o as Errand);
+            }
+            else { 
+                context.Add(o);
+
+                context.SaveChanges();
+
+                return "";
+            }
+
+        }
     }
 }

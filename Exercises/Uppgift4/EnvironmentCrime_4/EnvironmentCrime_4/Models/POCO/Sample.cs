@@ -11,8 +11,6 @@ namespace EnvironmentCrime_4.Models
         [Key]
         public int SampleId { get; set; }
         public String SampleName { get; set; }
-
-
         public int ErrandId { get; set; }
     }
 }
