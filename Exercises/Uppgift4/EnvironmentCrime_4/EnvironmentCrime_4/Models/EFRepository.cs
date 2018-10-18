@@ -107,6 +107,11 @@ namespace EnvironmentCrime_4.Models
             return Task.Run(() =>
             {
                 var errand = Errands.Where(e => e.ErrandID == id).First();
+
+
+                errand.Pictures = Pictures.Where(p => p.ErrandId == id).ToList();
+                errand.Samples = Samples.Where(s => s.ErrandId == id).ToList();
+
                 return errand;
             });
         }
@@ -135,7 +140,8 @@ namespace EnvironmentCrime_4.Models
 
                 return "";
             }
-
         }
+
+
     }
 }

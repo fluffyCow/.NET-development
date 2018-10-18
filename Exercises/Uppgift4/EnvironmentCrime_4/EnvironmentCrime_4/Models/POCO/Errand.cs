@@ -72,6 +72,10 @@ namespace EnvironmentCrime_4.Models
         [NotMapped]
         [UIHint("HiddenInput")]
         public bool IsSubmitted { get; set; }
-        
+
+        public List<Picture> Pictures{ get; set; }
+
+        public List<Sample> Samples { get; set; }
+
     }
 }

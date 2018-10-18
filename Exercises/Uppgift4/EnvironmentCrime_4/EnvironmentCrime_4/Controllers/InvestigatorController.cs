@@ -146,7 +146,7 @@ namespace EnvironmentCrime_4.Controllers
                 //flytta den temporära filen rätt
                 System.IO.File.Move(tempPath, path);
 
-                Sample s = new Sample { SampleName = path, ErrandId = errandId };
+                Sample s = new Sample { SampleName = SampleFile.FileName, ErrandId = errandId };
                 repository.SaveObjectToDB(s);
             }
 
@@ -169,7 +169,7 @@ namespace EnvironmentCrime_4.Controllers
                 //flytta den temporära filen rätt
                 System.IO.File.Move(tempPath, path);
 
-                Picture p = new Picture { PictureName = path, ErrandId = errandId };
+                Picture p = new Picture { PictureName = ImageFile.FileName, ErrandId = errandId };
                 repository.SaveObjectToDB(p);
             }
 

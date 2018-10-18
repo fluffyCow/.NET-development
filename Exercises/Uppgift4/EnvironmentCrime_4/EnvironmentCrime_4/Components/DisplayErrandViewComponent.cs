@@ -29,6 +29,7 @@ namespace EnvironmentCrime_4.Components
         {
             //Get details about the errand from the repository
             var errand = await repository.GetErrandDetail(id);    
+            
             return View("DisplayErrand", errand);
         }
 

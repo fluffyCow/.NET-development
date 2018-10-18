@@ -46,7 +46,10 @@
     </p>
     <p>
         <span class="label">Provtagning: </span><br />
-        Provtagning.pdf
+        @foreach (Sample s in Model.Samples)
+        {
+            <a href=~/Uploads/@s.SampleName>Prov</a><br />
+        }
     </p>
     <p>
         <span class="label">Ytterligare information: </span><br />
@@ -58,6 +61,10 @@
     </p>
     <p>
         <span class="label">Bilder: </span><br />
-        <img src="~/images/imagetest.jpg" alt="klicka på bilden" />
+        @foreach (Picture p in Model.Pictures)
+        {
+            <img src=~/Uploads/@p.PictureName alt="klicka på bilden" width="100"/><br />
+        }
+
     </p>
 </section>
